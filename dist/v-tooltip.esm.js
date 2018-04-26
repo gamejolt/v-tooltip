@@ -3180,10 +3180,10 @@ var _initialiseProps = function _initialiseProps() {
 	this._events = [];
 
 	this._setTooltipNodeEvent = function (evt, reference, delay, options) {
-		var relatedreference = evt.relatedreference || evt.toElement;
+		var relatedreference = evt.relatedreference || evt.toElement || evt.relatedTarget;
 
 		var callback = function callback(evt2) {
-			var relatedreference2 = evt2.relatedreference || evt2.toElement;
+			var relatedreference2 = evt2.relatedreference || evt2.toElement || evt2.relatedTarget;
 
 			// Remove event listener after call
 			_this9._tooltipNode.removeEventListener(evt.type, callback);
@@ -4146,10 +4146,10 @@ var Popover = { render: function render() {
 			var reference = this.$refs.trigger;
 			var popoverNode = this.$refs.popover;
 
-			var relatedreference = event.relatedreference || event.toElement;
+			var relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
 
 			var callback = function callback(event2) {
-				var relatedreference2 = event2.relatedreference || event2.toElement;
+				var relatedreference2 = event2.relatedreference || event2.toElement || event2.relatedTarget;
 
 				// Remove event listener after call
 				popoverNode.removeEventListener(event.type, callback);
