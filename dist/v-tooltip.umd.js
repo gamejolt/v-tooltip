@@ -3870,7 +3870,6 @@ var Popover = { render: function render() {
 
 			if (force || !this.disabled) {
 				this.$_scheduleShow(event);
-				this.$emit('show');
 			}
 			this.$emit('update:open', true);
 		},
@@ -3880,8 +3879,6 @@ var Popover = { render: function render() {
 			    _ref2$skipDelay = _ref2.skipDelay;
 
 			this.$_scheduleHide(event);
-
-			this.$emit('hide');
 			this.$emit('update:open', false);
 		},
 		dispose: function dispose() {
@@ -3994,6 +3991,7 @@ var Popover = { render: function render() {
 				}
 			}
 
+			this.$emit('show');
 			openPopovers.push(this);
 		},
 		$_hide: function $_hide() {
@@ -4026,6 +4024,8 @@ var Popover = { render: function render() {
 					}
 				}, disposeTime);
 			}
+
+			this.$emit('hide');
 		},
 		$_findContainer: function $_findContainer(container, reference) {
 			// if container is a query, get the relative element
